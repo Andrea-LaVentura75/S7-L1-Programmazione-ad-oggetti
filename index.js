@@ -64,6 +64,8 @@ persona1.anzianita(registroPersone);
 //SECONDO ES
 const myForm = document.querySelector("form");
 
+let section = document.querySelector("section");
+
 let textNomeAnimale = document.querySelector(".text-nomeAnimale");
 
 let textNomePadrone = document.querySelector(".text-nomePadrone");
@@ -85,13 +87,26 @@ let arrayPet = [];
 myForm.addEventListener("submit", function (e) {
   e.preventDefault();
 
+  let ul = document.createElement("ul");
+
   nomeAnimale = textNomeAnimale.value;
+  let li1 = document.createElement("li");
+  li1.innerText = textNomeAnimale.value;
 
   nomePadrone = textNomePadrone.value;
+  let li2 = document.createElement("li");
+  li2.innerText = textNomePadrone.value;
 
   specie = specieAnimale.value;
+  let li3 = document.createElement("li");
+  li3.innerText = specieAnimale.value;
 
   razzaanimale = razzaAnimali.value;
+  let li4 = document.createElement("li");
+  li4.innerText = razzaAnimali.value;
+
+  ul.append(li1, li2, li3, li4);
+  section.appendChild(ul);
 
   class SchedaPet {
     constructor(_nomeAnimale, _nomePadrone, _specie, _razzaanimale) {
@@ -107,6 +122,7 @@ myForm.addEventListener("submit", function (e) {
 
         for (let j = i + 1; j < schedaAnimale.length; j++) {
           if (schedaAnimale[i].namePadrone === schedaAnimale[j].namePadrone) {
+            li2.style.color = "red";
             console.log("stesso padrone per più animali");
           }
         }
